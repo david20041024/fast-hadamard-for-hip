@@ -59,4 +59,17 @@ a = torch.randn(5,32,device="cuda",dtype=torch.float16)
 scale = 1.0 / math.sqrt(a.size(-1))
 print(fast_hadamard(a,scale))
 ```
+# Optimized Fast Hadamard Transform for N=512 and N=4096
+```
+cd fast_hadamard_op
+python setup.py install
+```
+```
+import math
+import torch
+from fast_hadamard_transform_op import fast_hadamard
+a = torch.randn(4096,device="cuda",dtype=torch.float16)
+scale = 1.0 / math.sqrt(a.size(-1))
+print(fast_hadamard(a,scale))
+```
 
